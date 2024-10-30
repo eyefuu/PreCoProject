@@ -1,0 +1,86 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    
+</body>
+</html> -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            /* Change font-family to Noto Sans Thai */
+        }
+        </style>
+        </head>
+  <body>
+    <!-- <h1>Hello, world!</h1> -->
+    <div class="container p-5">
+        <h1 class="text-center mb-5 text-uppercase text-muted">ระบบจองห้องประชุม</h1>
+        <div class="row">
+            <div class="col-sm-5 bg-light rounded py-3">
+                <h2 class="text-center">Login</h2>
+                <form action="/login" method="post">
+                    <div class="mb-3">
+                      <label for="_email" class="form-label">Email address</label>
+                      <input type="text" class="form-control" id="_email" name="user_email"  placeholder="Email" required>
+                      <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                    </div>
+                    <div class="mb-3">
+                      <label for="_pass" class="form-label">Password</label>
+                      <input type="password" class="form-control" name="user_pass" id="_pass" placeholder="Password" required>
+                    </div>
+                    <% if (locals.login_errors) {
+                        login_errors.forEach(function(error_msg) { %>
+                        <div class="alert alert-danger" role="alert" ><%= error_msg %></div>
+                        <%})
+                    }%>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                  </form>
+            </div>
+            <div class="col-sm-5 bg-light rounded py-3 mx-3">
+                <h2 class="text-center">Register</h2>
+                <form action="/register" method="post" novalidate>
+                    <div class="mb-3">
+                      <label for="_name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="_rname" name="user_name" value= "<%= (locals.old_data) ? old_data.user_name : '' %>" placeholder="Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="_email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="_remail" name="user_email"  value= "<%= (locals.old_data) ? old_data.user_email : '' %>" placeholder="Email" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="_pass" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="_rpass" name="user_pass" placeholder="Password" required>
+                      </div>
+                    <!-- <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div> -->
+                    <% if (locals.register_error) {
+                        register_error.forEach(function(error_msg) { %>
+                        <div class="alert alert-danger" role="alert" ><%= error_msg %></div>
+                        <%})
+                    }%>
+                    <button type="submit" class="btn btn-success ">Sign up</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

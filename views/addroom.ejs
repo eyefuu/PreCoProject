@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Rooms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            /* Change font-family to Noto Sans Thai */
+            background-image: url("https://www.coalesse.com/wp-content/uploads/2019/05/16-0041815.gif");
+            /* background-size:contain;         */
+        }
+
+        .navbar {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .formbor {
+            width: 50%;
+            padding: 30em;
+            background-color: #2a2c34bd;
+            color: white;
+            margin: 1em 25% 0 25%;
+
+        }
+
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+        <div class="container-fluid text-bg-dark p-3 ">
+            <!-- <a class="navbar-brand " href="#">ระบบจองห้องประชุม
+          </a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="../admin-home">หน้าหลัก</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page"
+                            href="../admin/readrooms">ห้องประชุม</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">ตั้งค่าวัน/เวลา</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light me-2" type="submit">ค้นหา</button>
+                </form>
+                <button type="button" class="btn btn-danger" onclick="logout()">logout</button>
+
+                <script>
+                    function logout() {
+                        window.location.href = "/logout";
+                    }
+                </script>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="border border-black p-4 mb-2 border-opacity-25 rounded-3 formbor">
+        <h3>เพิ่มห้องประชุม</h3>
+        <hr>
+        <form action="/admin/addrooms" method="POST">
+            <div class="mb-3">
+                <label for="roomname" class="form-label">หมายเลขห้อง</label>
+                <input type="text" id="roomname" name="roomname" required class="form-control"
+                    placeholder="ใส่หมายเลขห้อง">
+            </div>
+            <div class="mb-3">
+                <label for="capacity" class="form-label">จำนวนคนที่บรรจุได้</label>
+                <input type="number" id="capacity" name="capacity" required class="form-control"
+                    placeholder="ใส่จำนวนคนที่บรรจุได้">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">รายละเอียดห้อง</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">สถานที่</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="roomtype" id="roomtype1" value="1" checked>
+                    <label class="form-check-label" for="roomtype1">
+                        ตึก 9
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="roomtype" id="roomtype2" value="2">
+                    <label class="form-check-label" for="roomtype2">
+                        ตึก 6
+                    </label>
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-success" type="submit">เพิ่มห้องประชุม</button>
+                <button class="btn btn-danger" type="button" onclick="cancle()">ยกเลิก</button>
+            </div>
+            <!-- <button type="submit">เพิ่มห้องประชุม</button> -->
+        </form>
+
+    </div>
+    <script>
+        function cancle() {
+            window.location.href = "/admin/readrooms";
+        }
+    </script>
+
+</body>
+
+</html>
